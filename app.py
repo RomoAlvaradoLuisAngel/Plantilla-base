@@ -3,10 +3,26 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def index():
-    arr = ["Luis", "Paco", "Rosita", "Martin", "Messi"]
-    autor = "Luis Angel Romo Alvarado"
-    return render_template("index.html", nombre = autor, amigos = arr)
+def base():
+    return render_template("base.html")
+
+@app.route("/animales")
+def animales():
+    return render_template("animales.html")
+
+@app.route("/vehiculos")
+def vehiculos():
+    return render_template("vehiculos.html")
+
+@app.route("/maravillas")
+def maravillas():
+    return render_template("maravillas.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 
 
 if __name__ == "__main__":
