@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Inicio de la web {% endblock %}
+
+{% block contenido %}
+<section> 
+    <h1 class="text-center">¿Que es esta pagina?</h1>
+    <p class="text-center" >En esta pagina aprenderemos cosas variadas pero llamativas, como animales exoticos que en el caso de esta pagina seran muy poco conocidos
+      o vehiculos antiguos, muy conocidos, pero resumiendolo cortamente, es una pagina de informacion variada. 
+    </p>
+    <div class="text-center">
+    <img src="{{ url_for('static', filename='img/huevo.jpg') }}" alt="Huevito" style="width: 10%;">
+    <img src="{{ url_for('static', filename='img/perrito.jpg') }}" alt="perrito bonito" style="width: 10%;">
+    </div>
+  </section>
+{% endblock contenido %}

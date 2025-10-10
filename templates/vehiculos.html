@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title%} Vehiculos antiguos {% endblock%}
+
+{% block contenido %}
+<div class="text-center">
+    <h1>Vehiculos antiguos</h1>
+    <p>El nacimiento del automóvil moderno se atribuye a Carl Benz, quien el 29 de enero de 1886 patentó el Benz Patent-Motorwagen, el primer vehículo propulsado por un motor de combustión interna de gasolina. Este modelo de tres ruedas sentó las bases para el desarrollo posterior de los vehículos, marcando un hito en la historia de la movilidad personal.</p>
+</div>   
+    <div class="text-center">
+    <h2>Aston Martin DBR1</h2>
+    <p>El DBR1, que ganó en Le Mans en 1959, es un automóvil legendario que ha alcanzado valores de más de 20 millones de dólares en subastas.</p>
+    <img src="{{ url_for('static', filename='img/aston.jpg') }}" alt="Aston Martin DBR1" style="width: 25%;">
+    </div>
+
+        <div class="text-center">
+    <h2>Bugatti Type 57SC Atlantic</h2>
+    <p>Uno de los coches más exclusivos jamás fabricados, con solo 4 unidades producidas. Su diseño y rareza lo convierten en un vehículo de colección invaluable.</p>
+    <img src="{{ url_for('static', filename='img/bugatti.jpg') }}" alt="Bugatti" style="width: 25%;">
+    </div>
+
+        <div class="text-center">
+    <h2>Ferrari 250 GTO</h2>
+    <p>Este modelo de Ferrari ha alcanzado precios récord, llegando a subastarse por más de 70 millones de dólares debido a su rareza y éxito en las pistas.</p>
+    <img src="{{ url_for('static', filename='img/ferrari.jpg') }}" alt="Ferrari 250 GTO" style="width: 25%;">
+    </div>
+
+            <div class="text-center">
+    <h2>Cadillac Eldorado</h2>
+    <p>El Cadillac Eldorado de 1953 combinaba innovación con lujo. Su suspensión neumática y detalles dorados lo convirtieron en un coche exclusivo para quienes buscaban el máximo confort y distinción.</p>
+    <img src="{{ url_for('static', filename='img/cadillac.jpg') }}" alt="Cadillac Eldorado" style="width: 25%;">
+    </div>
+
+        <div class="text-center">
+    <h2>Ford Mustang</h2>
+    <p>El Ford Mustang, lanzado en 1964, revolucionó el mercado con su diseño accesible y deportivo. Su legado continúa con modelos modernos que siguen capturando la esencia del original.</p>
+    <img src="{{ url_for('static', filename='img/ford.jpg') }}" alt="Ford Mustang" style="width: 25%;">
+    </div>
+    {% endblock %}
