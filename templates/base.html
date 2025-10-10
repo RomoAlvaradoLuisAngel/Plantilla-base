@@ -9,7 +9,10 @@
 </head>
 <body style="background-color: lightskyblue;">
  <header style="background-color: rgba(235, 235, 235, 1); color: white; padding: 25px;">
-        <nav>
+    <div class="text-black text-center">    
+    Desarrollo de Plantilla Base
+    </div>
+    <nav>
             <a href="{{ url_for('inicio') }}">Inicio</a> |
             <a href="{{ url_for('animales') }}">Animales exoticos</a> |
             <a href="{{ url_for('vehiculos') }}">Vehiculos antiguos</a> |
@@ -21,8 +24,8 @@
     {% block contenido %}{% endblock %}
 
 
-<footer>
-<h6>Elaborado por Romo Alvarado Luis Angel</h6>
+<footer class="text-center">
+<h6>Elaborado por Romo Alvarado Luis Angel del grupo 5D</h6>
 </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
