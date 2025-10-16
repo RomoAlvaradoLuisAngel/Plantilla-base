@@ -22,6 +22,14 @@ def maravillas():
 def about():
     return render_template("about.html")
 
+@app.route("/form")
+def form():
+    return render_template("formulario.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

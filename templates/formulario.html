@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title%} Formulario {% endblock%}
+
+{% block contenido %}
+
+
+<div class="card mx-auto p-2 mb-3 shadow-lg bg-body-tertiary rounded text-center justify-content" style="width: 33%;">
+  <div class="card-header ">
+    <h3>Crea una cuenta</h3>
+  <h6 class="text-secondary ">Es rápido y fácil.</h6>
+</div>
+
+  <div class="card-body">
+   <div class="row mb-2">
+  <div class="col">
+    <input type="text" class="form-control border border-black" placeholder="Nombre" aria-label="Nombre"id="Nombre" required>
+  </div>
+  <div class="col">
+    <input type="text" class="form-control border border-black" placeholder="Apellido" aria-label="Apellido" id="Apellido"required>
+  </div>
+</div>
+
+    <h6 class="row justify-content-start">Fecha de nacimiento</h6>
+    <div class="row d-flex justify-content-center mb-2">
+  <select class="form-select w-25 hstack gap-3 form-check-inline" id="dia" aria-label="Default select example">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+  <option value="25">25</option>
+  <option value="26">26</option>
+  <option value="27">27</option>
+  <option value="28">28</option>
+  <option value="29">29</option>
+  <option value="30">30</option>
+  <option value="31">31</option>
+</select> 
+  <select class="form-select w-25 p-2 form-check-inline" id="mes" aria-label="Default select example">
+  <option value="ene">ene</option>
+  <option value="feb">feb</option>
+  <option value="mar">mar</option>
+  <option value="abr">abr</option>
+  <option value="may">may</option>
+  <option value="jun">jun</option>
+  <option value="jul">jul</option>
+  <option value="ago">ago</option>
+  <option value="sep">sep</option>
+  <option value="oct">oct</option>
+  <option value="nov">nov</option>
+  <option value="div">dic</option>
+</select>
+<select class="form-select w-25 p-2 form-check-inline" id="año"aria-label="Default select example">
+  <option value="2025">2025</option>
+  <option value="2024">2024</option>
+  <option value="2023">2023</option>
+  <option value="2022">2022</option>
+  <option value="2021">2021</option>
+  <option value="2020">2020</option>
+  <option value="2019">2019</option>
+  <option value="2018">2018</option>
+  <option value="2017">2017</option>
+  <option value="2016">2016</option>
+  <option value="2015">2015</option>
+  <option value="2014">2014</option>
+</select>
+      </div>
+
+
+
+
+<h6 class="row justify-content-start">Género</h6>
+<div class="row mb-3 ">
+  <div class="col-auto">
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="Género" id="mujer" value="mujer">
+  <label class="form-check-label" for="inlineRadio1">Mujer</label>
+</div>
+</div>
+
+  <div class="col-auto">
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="Género" id="hombre" value="hombre">
+  <label class="form-check-label" for="inlineRadio2">Hombre</label>
+</div>
+</div>
+
+  <div class="col-auto">
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="Género" id="Personalizado" value="hombre">
+  <label class="form-check-label" for="inlineRadio2">Personalizado</label>
+</div>
+</div>
+
+  <div class="col-auto" style="width: 180%;">
+<select class="form-select" aria-label="Default select example">
+  <option selected>Personalizado</option>
+  <option value="fem">Femenino: saludala por su cumpleaños.</option>
+  <option value="mas">Masculino: saludalo por su cumpleaños</option>
+  <option value="neu">Neutro: saludalo(a) por su cumpleaños</option>
+</select>
+</div>
+</div>
+     
+<div class="mb-3">
+    <input type="text" class="form-control border border-black" placeholder="Numero de celular o correo electronico" aria-label="Numero de celular o correo electronico" required>
+  </div>
+
+    <input type="password" class="form-control border border-black" placeholder="Contraseña nueva " aria-label="Contraseña nueva" id="Contraseña"required>
+  </div>
+
+  <p class="text-body-secondary fw-lighter fs-6">
+Es posible que las personas que usan nuestro servicio hayan subido tu información de contacto a Facebook. <a href="https://www.facebook.com/help/637205020878504" class="text-reset">Más información.</a>.
+</p>
+  <p class="text-body-secondary fw-lighter">
+Al hacer clic en "Registrarte", aceptas nuestras Condiciones, <a href="https://www.facebook.com/privacy/policy/?entry_point=data_policy_redirect&entry=0" class="text-reset">la Política de privacidad</a>.
+ y <a href="https://www.facebook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0" class="text-reset">la Política de cookies.</a> Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.</p>
+    
+ 
+ <button class="btn btn-success " type="submit">Registrarte</button>
+ <p class="text-body-secondary text-center "><a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNzU5NDE5Mjc0LCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D">¿Ya tienes una cuenta?</a></p>
+        </div>
+</div>
+</div>
+</div>
+{% endblock %}
