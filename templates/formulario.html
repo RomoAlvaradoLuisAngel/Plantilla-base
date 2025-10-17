@@ -3,7 +3,7 @@
 {% block title%} Formulario {% endblock%}
 
 {% block contenido %}
-
+<form id="RegistrationForm" method="post" action="/registrame">
 
 <div class="card mx-auto p-2 mb-3 shadow-lg bg-body-tertiary rounded text-center justify-content" style="width: 33%;">
   <div class="card-header ">
@@ -14,16 +14,16 @@
   <div class="card-body">
    <div class="row mb-2">
   <div class="col">
-    <input type="text" class="form-control border border-black" placeholder="Nombre" aria-label="Nombre"id="Nombre" required>
+    <input type="text" class="form-control border border-black" placeholder="Nombre" aria-label="Nombre" name="Nombre" id="Nombre" required minlength="3" maxlength="100" value = "{{ request.form.get("Nombre", '')}}">
   </div>
   <div class="col">
-    <input type="text" class="form-control border border-black" placeholder="Apellido" aria-label="Apellido" id="Apellido"required>
+    <input type="text" class="form-control border border-black" placeholder="Apellido" aria-label="Apellido" name="Apellido" id="Apellido" required minlength="3" maxlength="100" value = "{{ request.form.get("Apellido", '')}}">
   </div>
 </div>
 
     <h6 class="row justify-content-start">Fecha de nacimiento</h6>
     <div class="row d-flex justify-content-center mb-2">
-  <select class="form-select w-25 hstack gap-3 form-check-inline" id="dia" aria-label="Default select example">
+  <select class="form-select w-25 hstack gap-3 form-check-inline" name="dia" id="dia" aria-label="Default select example" required value = "{{ request.form.get("dia", '')}}">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
@@ -56,7 +56,7 @@
   <option value="30">30</option>
   <option value="31">31</option>
 </select> 
-  <select class="form-select w-25 p-2 form-check-inline" id="mes" aria-label="Default select example">
+  <select class="form-select w-25 p-2 form-check-inline" name="mes" id="mes" aria-label="Default select example" required value = "{{ request.form.get("mes", '')}}">
   <option value="ene">ene</option>
   <option value="feb">feb</option>
   <option value="mar">mar</option>
@@ -70,7 +70,7 @@
   <option value="nov">nov</option>
   <option value="div">dic</option>
 </select>
-<select class="form-select w-25 p-2 form-check-inline" id="año"aria-label="Default select example">
+<select class="form-select w-25 p-2 form-check-inline" name="año" id="año"aria-label="Default select example" required value = "{{ request.form.get("año", '')}}">
   <option value="2025">2025</option>
   <option value="2024">2024</option>
   <option value="2023">2023</option>
@@ -88,26 +88,25 @@
 
 
 
-
 <h6 class="row justify-content-start">Género</h6>
 <div class="row mb-3 ">
   <div class="col-auto">
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="Género" id="mujer" value="mujer">
+  <input class="form-check-input" type="radio" name="Género" id="mujer" value="mujer" required value = "{{ request.form.get("mujer", '')}}">
   <label class="form-check-label" for="inlineRadio1">Mujer</label>
 </div>
 </div>
 
   <div class="col-auto">
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="Género" id="hombre" value="hombre">
+  <input class="form-check-input" type="radio" name="Género" id="hombre" value="hombre" required value = "{{ request.form.get("hombre", '')}}">
   <label class="form-check-label" for="inlineRadio2">Hombre</label>
 </div>
 </div>
 
   <div class="col-auto">
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="Género" id="Personalizado" value="hombre">
+  <input class="form-check-input" type="radio" name="Género" id="Personalizado" value="personalizado" required value = "{{ request.form.get("personalizado", '')}}">
   <label class="form-check-label" for="inlineRadio2">Personalizado</label>
 </div>
 </div>
@@ -123,11 +122,13 @@
 </div>
      
 <div class="mb-3">
-    <input type="text" class="form-control border border-black" placeholder="Numero de celular o correo electronico" aria-label="Numero de celular o correo electronico" required>
+    <input type="text" class="form-control border border-black" placeholder="Numero de celular o correo electronico" aria-label="Numero de celular o correo electronico" name="NumeroCorreo" id="NumeroCorreo" minlentgth="3"maxlength="100" required value = "{{ request.form.get("NumeroCorreo", '')}}">
   </div>
 
-    <input type="password" class="form-control border border-black" placeholder="Contraseña nueva " aria-label="Contraseña nueva" id="Contraseña"required>
+    <input type="password" class="form-control border border-black" placeholder="Contraseña nueva " aria-label="Contraseña nueva" name="Contraseña" id="Contraseña" minlength="8" maxlength="100" required value = "{{ request.form.get("Contraseña", '')}}">
   </div>
+
+  <input type="password" class="form-control border border-black" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña" name="ConfirmarContra" id="ConfirmarContra" minlength="8" maxlength="100" required value = "{{ request.form.get("ConfirmarContra", '')}}">
 
   <p class="text-body-secondary fw-lighter fs-6">
 Es posible que las personas que usan nuestro servicio hayan subido tu información de contacto a Facebook. <a href="https://www.facebook.com/help/637205020878504" class="text-reset">Más información.</a>.
@@ -143,4 +144,5 @@ Al hacer clic en "Registrarte", aceptas nuestras Condiciones, <a href="https://w
 </div>
 </div>
 </div>
+</form>
 {% endblock %}
