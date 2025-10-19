@@ -3,6 +3,9 @@
 {% block title%} Inicio de sesion {% endblock%}
 
 {% block contenido %}
+
+<form method="post" action="{{ url_for('iniciar_sesion') }}">
+
 <div class="card mx-auto p-2 mb-3 shadow-lg bg-body-tertiary rounded text-center justify-content" style="width: 33%;">
   <div class="card-header ">
     <h3>Inicio de sesion</h3>
@@ -12,12 +15,12 @@
   <div class="card-body">
     <h6 class="text-start">Correo electronico</h6>
     <div class="col">
-    <input type="text" class="form-control border border-black" placeholder="Correo electronico" aria-label="Correo electronico"id="Correo electronico" required>
+    <input type="text" class="form-control border border-black" placeholder="Correo electronico" aria-label="Correo electronico" id="Correo electronico" name="Correo electronico" required>
   </div>
   <br>
   <h6 class="text-start">Contraseña</h6>
   <div class="col">
-    <input type="password" class="form-control border border-black" placeholder="Contraseña" aria-label="Contraseña" id="Contrasena" required>
+    <input type="password" class="form-control border border-black" placeholder="Contraseña" aria-label="Contraseña" id="Contrasena" name="Contrasena" required>
   </div>
 </div>
 
@@ -27,5 +30,6 @@
  <p>No tienes una cuenta? <a href="{{ url_for('form')}}">Clikea aqui</a></p>
 </div>
 </div>
+</form>
 
 {% endblock %}

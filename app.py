@@ -4,6 +4,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'una_clave_secreta_muy_larga_y_dificil_de_adivinar'
 
 @app.route("/")
+def form():
+    return render_template("formulario.html")
+@app.route("/inicio")
 def inicio():
     return render_template("index.html")
 
@@ -23,15 +26,15 @@ def maravillas():
 def about():
     return render_template("about.html")
 
-@app.route("/form")
-def form():
-    return render_template("formulario.html")
+
 
 @app.route("/login")
 def login():
     return render_template("login.html")
 
-@app.route("/registrame", methods = ("GET", "POST"))
+
+
+@app.route("/registrame", methods = ["GET", "POST"])
 def registrame():
     error = None
     if request.method == "POST":
@@ -53,7 +56,21 @@ def registrame():
             return render_template("/formulario.html")
         else: 
             flash(f"¡Registro exitoso para el usuario: {nombre}")
+            return render_template("/login.html")
+        
+@app.route("/inicio_sesion", methods = ["POST"])
+def iniciar_sesion():
+    if request.method == "POST":
+        NumeroCorreo = request.form["Correo electronico"]
+        Contraseña = request.form["Contrasena"]  
+    error = None
+    if error != None:
+            flash(error)
+            return render_template("/login.html")
+    else: 
+            flash(f"¡Bienvenido!")
             return render_template("/index.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

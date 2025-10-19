@@ -3,6 +3,20 @@
 {% block title%} Formulario {% endblock%}
 
 {% block contenido %}
+<div class="container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+</div>
 <form id="RegistrationForm" method="post" action="/registrame">
 
 <div class="card mx-auto p-2 mb-3 shadow-lg bg-body-tertiary rounded text-center justify-content" style="width: 33%;">
@@ -87,7 +101,6 @@
       </div>
 
 
-
 <h6 class="row justify-content-start">Género</h6>
 <div class="row mb-3 ">
   <div class="col-auto">
@@ -141,8 +154,5 @@ Al hacer clic en "Registrarte", aceptas nuestras Condiciones, <a href="https://w
  <button class="btn btn-success " type="submit">Registrarte</button>
  <p class="text-body-secondary text-center "><a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNzU5NDE5Mjc0LCJjYWxsc2l0ZV9pZCI6MjY5NTQ4NDUzMDcyMDk1MX0%3D">¿Ya tienes una cuenta?</a></p>
         </div>
-</div>
-</div>
-</div>
 </form>
 {% endblock %}
