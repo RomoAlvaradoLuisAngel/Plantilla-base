@@ -3,6 +3,21 @@ from flask import Flask, render_template, url_for, request, flash, session
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'una_clave_secreta_muy_larga_y_dificil_de_adivinar'
 
+USUARIOS_REGISTRADOS = {
+    'admin@correo.com' :  {
+        'password' : 'Admin123',
+        'nombre' : 'Administrador',
+        'fecha_nacimiento' : '14/05/1998'
+}
+}
+
+@app.route('/validalogin', methods=['GET', 'POST'])
+def validaLogin():
+    if request.method == 'POST':
+        email=request.form.get('Correo_electronico', '').strip()
+        password = request.form.get('Contrasena', '')
+
+
 @app.route("/")
 def form():
     return render_template("formulario.html")
@@ -26,9 +41,11 @@ def maravillas():
 def about():
     return render_template("about.html")
 
-@app.route("/login")
+@app.route('/login')
 def login():
-    return render_template("login.html")
+    if session.get('logueado') ==True:
+        session.clear()
+        return render_template("index.html")
 
 @app.route("/registrame", methods = ["GET", "POST"])
 def registrame():
@@ -45,7 +62,7 @@ def registrame():
         ConfirmarContra = request.form["ConfirmarContra"]
         
         if Contraseña != ConfirmarContra:
-            error = "La contraseña no funciona"
+            error = "Las contraseñas no coinciden :("
         
         if error != None:
             flash(error)
@@ -68,16 +85,8 @@ def profile():
 
 @app.route('/logout')
 def logout():  
-     session.pop('username', None)
-     return 'Logged out'
-
-USUARIOS_REGISTRADOS = {
-    'admin@correo.com' :  {
-         'password' : 'Admin123',
-         'nombre' : 'Administrador',
-         'fecha_nacimiento' : '14/05/1998'
-}
-}
+    session.pop('username', None)
+    return 'Logged out'
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -15,7 +15,7 @@
   <div class="card-body">
     <h6 class="text-start">Correo electronico</h6>
     <div class="col">
-    <input type="text" class="form-control border border-black" placeholder="Correo electronico" aria-label="Correo electronico" id="Correo electronico" name="Correo electronico" required>
+    <input type="text" class="form-control border border-black" placeholder="Correo electronico" aria-label="Correo_electronico" id="Correo_electronico" name="Correo_electronico" required>
   </div>
   <br>
   <h6 class="text-start">Contraseña</h6>
@@ -24,10 +24,18 @@
   </div>
 </div>
 
- <div class="card-footer">
- <button class="btn btn-success" type="submit">Iniciar sesion</button>
- </div>
- <p>No tienes una cuenta? <a href="{{ url_for('form')}}">Clikea aqui</a></p>
+{%if session.get("logueado") %}
+<div>
+<p>Bienvenido {{session.get("username")}}</p>
+</div>
+{% endif %}
+
+
+
+<div class="card-footer">
+<button class="btn btn-success" type="submit">Iniciar sesion</button>
+</div>
+<p>No tienes una cuenta? <a href="{{ url_for('form')}}">Clikea aqui</a></p>
 </div>
 </div>
 </form>
