@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, flash
+from flask import Flask, render_template, url_for, request, flash, session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'una_clave_secreta_muy_larga_y_dificil_de_adivinar'
@@ -26,13 +26,9 @@ def maravillas():
 def about():
     return render_template("about.html")
 
-
-
 @app.route("/login")
 def login():
     return render_template("login.html")
-
-
 
 @app.route("/registrame", methods = ["GET", "POST"])
 def registrame():
@@ -58,19 +54,30 @@ def registrame():
             flash(f"¡Registro exitoso para el usuario: {nombre}")
             return render_template("/login.html")
         
-@app.route("/inicio_sesion", methods = ["POST"])
-def iniciar_sesion():
-    if request.method == "POST":
-        NumeroCorreo = request.form["Correo electronico"]
-        Contraseña = request.form["Contrasena"]  
-    error = None
-    if error != None:
-            flash(error)
-            return render_template("/login.html")
-    else: 
-            flash(f"¡Bienvenido!")
-            return render_template("/index.html")
+@app.route('/login/<username>')
+def login_user(username):
+    session['username'] = username
+    return 'Logged in as ' + username
 
+@app.route('/profile')
+def profile():
+    username = session.get('username')
+    if username is not None:
+            return 'User: ' + username
+    return 'Not logged in'
+
+@app.route('/logout')
+def logout():  
+     session.pop('username', None)
+     return 'Logged out'
+
+USUARIOS_REGISTRADOS = {
+    'admin@correo.com' :  {
+         'password' : 'Admin123',
+         'nombre' : 'Administrador',
+         'fecha_nacimiento' : '14/05/1998'
+}
+}
 
 if __name__ == "__main__":
     app.run(debug=True)
