@@ -4,13 +4,14 @@
 
 {% block contenido %}
 
-<form method="post" action="{{ url_for('iniciar_sesion') }}">
+<form method="POST" action= "/validaLogin">
 
 <div class="card mx-auto p-2 mb-3 shadow-lg bg-body-tertiary rounded text-center justify-content" style="width: 33%;">
   <div class="card-header ">
     <h3>Inicio de sesion</h3>
   <div class="text-center p-3 rounded-circle"> 
 <img src="{{ url_for('static', filename='img/mono.jpg') }}" alt="Mono" style="width: 40%;" class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+</div>
 </div>
   <div class="card-body">
     <h6 class="text-start">Correo electronico</h6>

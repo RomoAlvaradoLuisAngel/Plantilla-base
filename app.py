@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, flash, session
+from flask import Flask, render_template, url_for, request, flash, session, redirect
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'una_clave_secreta_muy_larga_y_dificil_de_adivinar'
@@ -11,14 +11,45 @@ USUARIOS_REGISTRADOS = {
 }
 }
 
+@app.route('/login')
+def login():
+    if session.get('logueado') ==True:
+        session.clear()
+        return render_template("index.html")
+    else:
+        return render_template("login.html")
+
 @app.route('/validalogin', methods=['GET', 'POST'])
 def validaLogin():
     if request.method == 'POST':
         email=request.form.get('Correo_electronico', '').strip()
         password = request.form.get('Contrasena', '')
+        if not email in USUARIOS_REGISTRADOS:
+           flash('por favor ingrese correo y contraseña', 'error')
+        elif email in USUARIOS_REGISTRADOS:
+           usuario = USUARIOS_REGISTRADOS[email]
+           if usuario['password'] == password:
+               session['usuario_email'] = email
+               session['usuario'] = usuario['nombre']
+               session['logueado'] = True
+               return redirect(url_for('inicio'))
+        else:
+                flash('Contraseña incorrecta', 'error')
+    else:
+        flash('usuario no encontrado', 'error')
+        return render_template('login.html')
 
+@app.route('/')
+def index():
+    #if 'usuario_email' not in session:
+        #flash("Inicia sesion primero", "error")
+        #return render_template("login.html")
+        #return redirect(url_for('login'))
+        #usuario = USUARIOS_REGISTRADOS[session[usuario.email]]
+        
+        return render_template("index.html")
 
-@app.route("/")
+@app.route("/inicio")
 def form():
     return render_template("formulario.html")
 @app.route("/inicio")
@@ -41,11 +72,7 @@ def maravillas():
 def about():
     return render_template("about.html")
 
-@app.route('/login')
-def login():
-    if session.get('logueado') ==True:
-        session.clear()
-        return render_template("index.html")
+
 
 @app.route("/registrame", methods = ["GET", "POST"])
 def registrame():
@@ -86,6 +113,7 @@ def profile():
 @app.route('/logout')
 def logout():  
     session.pop('username', None)
+    flash("Sesion cerrada correctamente.")
     return 'Logged out'
 
 if __name__ == "__main__":
